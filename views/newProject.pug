@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/createProject
+
+block content
+    .contenido-principal
+        h1 #{nombrePagina}
+
+        //- pre= vardump(project)
+
+        if errors 
+            each error in errors
+                .alerta= error.text
+        +createProject(project)
+
+        

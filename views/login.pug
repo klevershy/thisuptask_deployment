@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        include partials/header  
+    body.login
+        .contenedor-formulario
+            h1 Login UpTask
+
+            if locals.notifications
+                .alertas
+                    each category in Object.keys(locals.notifications)
+                        each error in notifications[category]
+                            .alerta(class=`${category}`)
+                                p= error
+           
+           
+            form#formulario.caja.caja-login(method="POST" action="/login")
+                .campo
+                    label(for="email") E-mail:
+                    input(type="text" name="email" placeholder="Your Email here" value= email)
+                .campo
+                    label(for="password") Password:
+                    input(type="password" name="password" placeholder="Your password" value= password)
+                .campo.enviar
+                    input.boton(type="submit" value="login")
+                .campo.acciones
+                    a(href="/create-account") Don't have an Account yet? Create a Free Account
+                    a(href="/reset") forgot your password?
+        
+        
